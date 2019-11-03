@@ -1,0 +1,21 @@
+.THIS.body .mazeSect{
+ 	padding : 10px;
+}
+.THIS.body .headingSect{
+    margin: 5px;
+}
+.THIS.body .buttonSect{
+    text-align:center;
+    margin: 5px;
+}
+.THIS.body table{
+    width: auto;
+    margin: 0 auto;
+}
+.THIS.body .square{
+    width: 50px;
+    height: 50px;
+    border: 1px solid black;
+    background-color: white;
+    cursor: pointer;
+}

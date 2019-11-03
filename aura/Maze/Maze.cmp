@@ -1,0 +1,37 @@
+<aura:component controller="MazeController" implements="flexipage:availableForAllPageTypes" access="global" >
+    <!-- Attributes -->
+    <aura:attribute name="rows" type="integer" default="6"/>
+    <aura:attribute name="columns" type="integer" default="6"/>
+    <aura:attribute name="step" type="integer" default="0"/>
+    <aura:attribute name="coordinates" type="list" default="[]"/>
+	
+    <div class="body">
+        <lightning:card title="Maze Solver">
+            <div class="mazeSect">
+                <aura:if isTrue="{!v.step == 0}">
+                    <lightning:input type="number" value="{!v.rows}" label="Number of rows" max="9" min="3"/>
+                    <lightning:input type="number" value="{!v.columns}" label="Number of columns" max="9" min="3"/>
+                    <aura:set attribute="else">
+                        <div class="headingSect">
+                            <div class="slds-text-align_center slds-text-heading_large">..:: {!if(v.step == 1 , 'Set starting point',if(v.step == 2 , 'Set finishing point',if(v.step == 3 , 'Set obstacles', 'Here you go!')))}  ::..</div>
+                        </div>
+                        <table>
+                            <tbody>
+                                <aura:iteration items="{!v.coordinates}" var="coordinates">
+                                    <tr>
+                                        <aura:iteration items="{!coordinates}" var="coordinate">
+                                            <td style="{!if(coordinate.isStart , 'background-color: green', if(coordinate.isEnd, 'background-color: red', if(coordinate.isObstacle, 'background-color: grey',if(coordinate.isPath, 'background-color: yellow', ''))))}" data-row="{!coordinate.x}" data-column="{!coordinate.y}" class="square" onclick="{!c.selectCell}"></td>
+                                        </aura:iteration>
+                                    </tr>
+                                </aura:iteration>
+                            </tbody>
+                        </table>
+                    </aura:set>
+                </aura:if>
+                <div class="buttonSect">
+                   	<lightning:button variant="brand"  label="{!if(lessthan(v.step, 3) , 'Next', if(v.step == 3 , 'Solve', 'Reset'))}" title="{!if(v.step != 3 , 'Next', 'Solve')}" onclick="{! c.next }"/>
+                </div>
+            </div>
+        </lightning:card>
+    </div>
+</aura:component>
