@@ -2,6 +2,7 @@
 <Package xmlns="http://soap.sforce.com/2006/04/metadata">
     <types>
         <members>MazeController</members>
+        <members>Test_MazeController</members>
         <name>ApexClass</name>
     </types>
     <types>

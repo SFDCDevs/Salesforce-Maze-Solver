@@ -15,3 +15,4 @@
 5. It will show the optimal path, if not it will display alert.
 ![step 5](images/5.PNG?raw=true "Step 5")
 
+Install and play from here: https://sforce.co/2JKDVTE
